@@ -41,13 +41,18 @@
                 this.setState({ tdSalary :salary });
             }
 
-             onUserNameTxtChange = (evt) => {
+            onbasicTxtChange = (evt) => {
                 this.setState({ txtBasic : evt.target.value });
-                this.setState({ txtDa : evt.target.value });
+            }
+            onhraTxtChange = (evt) => {
                 this.setState({ txtHra : evt.target.value });
+            }
+            ondaTxtChange = (evt) => {
+                this.setState({ txtDa : evt.target.value });
+            }
+            onrangeTxtChange = (evt) => {
                 this.setState({ rangeTax : evt.target.value });
-                this.setState({ tdSalary : evt.target.value });
-             }
+            }
 
             //Presentation
             render(){
@@ -71,7 +76,7 @@
         </div>
         <div className="field">
             <label htmlFor="">Tax :</label>
-            <input type="range" name="" id="rangeTax" min="0" max="30" onChange={this.onUserNameTxtChange}/>
+            <input type="range" name="" id="rangeTax" min="0" max="30" onChange={this.onrangeTxtChange}/>
         </div>
         <div className="field">
             <input type="button" value="Calculate" id="btnCalculate" onClick={this.onbtnCalculate}/>
