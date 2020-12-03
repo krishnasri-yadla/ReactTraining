@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Salary calculator</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <style>
+        .highlight{
+            color : blue;
+        }
+    </style>
+    <script type="text/babel">
+        class SalaryCalculator extends React.Component{
+            //state
+            state = {
+                txtBasic:0,
+                txtDa:0,
+                txtHra:0,
+                rangeTax:0,
+                tdSalary:0
+
+                
+            };
+
+            //UI Behavior
+            onbtnCalculate = () => {
+                const basic = this.state.txtBasic;
+                console.log(basic);
+
+                const da = this.state.txtDa;
+                const hra = this .state.txtHra;
+                const tax = this.state.rangeTax;
+                const gross = basic + hra + da,
+                    net = gross * ((100-tax)/100);
+                const salary = net;
+                console.log(salary);
+                this.setState({ tdSalary :salary });
+            }
+
+             onUserNameTxtChange = (evt) => {
+                this.setState({ txtBasic : evt.target.value });
+                this.setState({ txtDa : evt.target.value });
+                this.setState({ txtHra : evt.target.value });
+                this.setState({ rangeTax : evt.target.value });
+                this.setState({ tdSalary : evt.target.value });
+             }
+
+            //Presentation
+            render(){
+               // console.log(this.props);
+                return(
+                     <div>
+                        <h1>Salary Calculator</h1>
+                     
+    <section>
+        <div className="field">
+            <label htmlFor="">Basic :</label>
+            <input type="number" name="" id="txtBasic" onChange={this.onbasicTxtChange} />
+        </div>
+        <div className="field">
+            <label htmlFor="">HRA :</label>
+            <input type="number" name="" id="txtHra" onChange={this.onhraTxtChange}/>
+        </div>
+        <div className="field">
+            <label htmlFor="">DA :</label>
+            <input type="number" name="" id="txtDa" onChange={this.ondaTxtChange}/>
+        </div>
+        <div className="field">
+            <label htmlFor="">Tax :</label>
+            <input type="range" name="" id="rangeTax" min="0" max="30" onChange={this.onUserNameTxtChange}/>
+        </div>
+        <div className="field">
+            <input type="button" value="Calculate" id="btnCalculate" onClick={this.onbtnCalculate}/>
+        </div>
+        <div className="field">
+            <table>
+                <tbody>
+                    <tr>
+                        <td id="tdBasic">{this.state.txtBasic}</td>
+                        <td id="tdHra">{this.state.txtDa}</td>
+                        <td id="tdDa">{this.state.txtHra}</td>
+                        <td id="tdTax">{this.state.rangeTax}</td>
+                        <td id="tdSalary">{this.state.tdSalary}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+              </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            /* React.createElement(Greeter, { template : 'Have a good day!'}),  */
+            <div>
+                <SalaryCalculator/>
+            </div>,
+            document.getElementById('root')
+        )
+    </script>
+</head>
+<body>
+    <div id="root">
+       
+    </div>
+</body>
+</html>
